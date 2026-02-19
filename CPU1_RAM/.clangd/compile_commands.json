@@ -1,0 +1,17 @@
+[
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_LAUNCHXL_F28379D -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_RAM/syscfg\"",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/device/F2837xD_CodeStartBranch.asm"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_LAUNCHXL_F28379D -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_RAM/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/device/device.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_LAUNCHXL_F28379D -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_RAM/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/main.c"
+   }
+]
