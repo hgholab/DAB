@@ -1,4 +1,4 @@
-#ifndef EPWM_H
-#define EPWM_H
+#ifndef EPWM_H_
+#define EPWM_H_
 
 #endif

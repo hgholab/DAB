@@ -4,16 +4,18 @@
 #include "device.h"
 #include "driverlib.h"
 
+#include "../include/epwm.h"
+#include "../include/gpio.h"
 #include "clock.h"
-#include "epwm.h"
 
 int main(void)
 {
         clock_init();
+        gpio_init();
 
-        configureEPWMGPIOs();
-        configure_all_epwms();
-        configureAllEPWMOutputs();
+        // configureEPWMGPIOs();
+        // configure_all_epwms();
+        // configureAllEPWMOutputs();
 
         for (;;)
                 ;
