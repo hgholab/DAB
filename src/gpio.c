@@ -1,3 +1,4 @@
+#include "device.h"
 #include "driverlib.h"
 
 #include "../include/gpio.h"

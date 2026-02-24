@@ -1,6 +1,3 @@
-// #include <stdbool.h>
-// #include <stdint.h>
-
 #include "device.h"
 #include "driverlib.h"
 
@@ -12,10 +9,7 @@ int main(void)
 {
         clock_init();
         gpio_init();
-
-        // configureEPWMGPIOs();
-        // configure_all_epwms();
-        // configureAllEPWMOutputs();
+        epwm_init();
 
         for (;;)
                 ;

@@ -12,9 +12,13 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./device/F2837xD_CodeStartBranch.obj" \
 "./device/device.obj" \
+"./src/adc.obj" \
 "./src/clock.obj" \
+"./src/controller.obj" \
 "./src/epwm.obj" \
+"./src/gpio.obj" \
 "./src/main.obj" \
+"./src/scheduler.obj" \
 "../2837xD_RAM_lnk_cpu1.cmd" \
 "C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/lib/SFO_v8_fpu_lib_build_c28_driverlib.lib" \
 "C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib" \
@@ -145,8 +149,8 @@ dab.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "device\F2837xD_CodeStartBranch.obj" "device\device.obj" "src\clock.obj" "src\epwm.obj" "src\main.obj" 
-	-$(RM) "device\device.d" "src\clock.d" "src\epwm.d" "src\main.d" 
+	-$(RM) "device\F2837xD_CodeStartBranch.obj" "device\device.obj" "src\adc.obj" "src\clock.obj" "src\controller.obj" "src\epwm.obj" "src\gpio.obj" "src\main.obj" "src\scheduler.obj" 
+	-$(RM) "device\device.d" "src\adc.d" "src\clock.d" "src\controller.d" "src\epwm.d" "src\gpio.d" "src\main.d" "src\scheduler.d" 
 	-$(RM) "device\F2837xD_CodeStartBranch.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

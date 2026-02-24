@@ -1,8 +1,9 @@
 #ifndef CLOCK_H_
 #define CLOCK_H_
 
-#define SYSCLK             160000000UL
-#define DAB_SWITCHING_FREQ 100000UL
+#define DAB_SWITCHING_FREQ 20000UL
+
+extern uint32_t sysclk_frequency;
 
 void clock_init(void);
 

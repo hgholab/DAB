@@ -1,164 +1,134 @@
+#include <stddef.h>
+#include <stdint.h>
+
+#include "device.h"
+#include "driverlib.h"
+
 #include "../include/epwm.h"
+#include "clock.h"
 
-#define EPWM_PERIOD          (1.0f / DAB_SWITCHING_FREQ)
-#define EPWMCLK              (SYSCLK / 2) // EPWMCLK = SYSCLK / 2 for SYSCLK > 100 MHz
-#define EPWM_TBCLK           EPWMCLK
-#define EPWM_TBCLK_PERIOD    (1.0f / EPWM_TBCLK)
-#define EPWM_TBPRD           ((uint16_t)(PWM_PERIOD / (2 * EPWM_TBCLK_PERIOD)))
-#define EPWM_DB_DELAY_COUNTS 20U
+#define EPWM_NUM 4 // Number of ePWM modules used
 
-void configure_epwm_timebase(uint32_t base, bool is_master)
+// This value represents the deadtime between 2 switches of each leg. The actual deadtime value
+// should be calculated by DEADBAND * (1 / TBCLK).
+#define DEADBAND 2
+
+void epwm_init(void)
 {
-        // Stop (freeze) the timebase counter while configuring.
-        EPWM_setTimeBaseCounterMode(base, EPWM_COUNTER_MODE_STOP_FREEZE);
+        // The address array for ePWM1, ePWM2, ePWM4, and ePWM5 base addresses.
+        uint32_t epwms_base_addresses[EPWM_NUM] = {EPWM1_BASE, EPWM2_BASE, EPWM4_BASE, EPWM5_BASE};
 
-        // Set timebase clock. EPWMCLK = SYSCLK / 2 for SYSCLK > 100 MHz, based on datasheet.
-        EPWM_setClockPrescaler(base, EPWM_CLOCK_DIVIDER_2, EPWM_HSCLOCK_DIVIDER_1);
+        // Calculate EPWMCLK. By default it is half of the SYSCLK.
+        uint32_t EPWMCLK = sysclk_frequency / 2UL;
 
-        // Set period for up-down count (center-aligned PWM).
-        EPWM_setTimeBasePeriod(base, EPWM_TBPRD);
+        // Time-base period (T_pwm = 2 * TBPRD * TBCLK and f_pwm = 1 / T_PWM for up-down count mode)
+        uint16_t TBPRD = (uint16_t)(EPWMCLK / (2UL * DAB_SWITCHING_FREQ));
 
-        // Start counter from zero.
-        EPWM_setTimeBaseCounter(base, 0U);
+        // Counter-compare value for all four ePWMs for duty cycle of 50%, hence the division by 2.
+        uint16_t CMP = (uint16_t)(TBPRD / 2U);
 
-        // Phase offset which is set to zero for now.
-        EPWM_setPhaseShift(base, 0U);
+        // Phase shift in degrees
+        uint16_t phase_shift = 43;
 
-        if (is_master)
-        {
-                // Master: disable sync input, generate sync output on CTR=0
-                // EPWM_setSyncInPulseSource(base, EPWM_SYNC_IN_PULSE_SRC_DISABLE);
-                // EPWM_setSyncOutPulseMode(base, EPWM_SYNC_OUT_PULSE_ON_COUNTER_COMPARE_C);
+        // Calculate the phase shift for slave ePWMs (2, 4 and 5).
+        uint16_t TBPHS = (uint16_t)((2 * TBPRD) * (phase_shift / 360.0f));
 
-                EPWM_disablePhaseShiftLoad(base);
+        // Compensate for the delay between EPWM modules in the sync chain.
+        TBPHS -= 2;
 
-                EPWM_setSyncOutPulseMode(base, EPWM_SYNC_OUT_PULSE_ON_COUNTER_ZERO);
-
-                // Master does not load counter from phase register.
-                EPWM_disablePhaseShiftLoad(base);
-        }
-        else
-        {
-                // Slave: sync input comes from previous EPWM sync out
-                // EPWM_setSyncInPulseSource(base, EPWM_SYNC_IN_PULSE_SRC_SYNCOUT_EPWM1);
-                // EPWM_setSyncInPulseMode
-                if (base == EPWM4_BASE)
-                {
-                        SysCtl_setSyncInputConfig(SYSCTL_SYNC_IN_EPWM4,
-                                                  SYSCTL_SYNC_IN_SRC_EPWM1SYNCOUT);
-                }
-
-                // Load counter from phase register on sync pulse
-                // EPWM_enablePhaseShiftLoad(base);
-
-                // Count up after sync — important for correct phase relationship
-                // EPWM_setCountModeAfterSync(base, EPWM_COUNT_MODE_UP_AFTER_SYNC);
-
-                // Pass sync pulse downstream to next module in chain.
-                EPWM_setSyncOutPulseMode(base, EPWM_SYNC_OUT_PULSE_ON_EPWMxSYNCIN);
-        }
-
-        // Up-down count for center-aligned PWM
-        EPWM_setTimeBaseCounterMode(base, EPWM_COUNTER_MODE_UP_DOWN);
-}
-
-void configure_all_epwms(void)
-{
-        // Step 1 — Halt all EPWM timebases before configuration
+        // Stop TBCLK while configuring ePWMs.
         SysCtl_disablePeripheral(SYSCTL_PERIPH_CLK_TBCLKSYNC);
 
-        // Step 2 — Enable clocks to all 4 EPWM modules
+        // Enable the clock for ePWM1, ePWM2, ePWM4, and ePWM5.
         SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_EPWM1);
         SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_EPWM2);
-        SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_EPWM3);
         SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_EPWM4);
+        SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_EPWM5);
 
-        // Step 3 — Configure timebases
-        configure_epwm_timebase(EPWM1_BASE, true);  // master
-        configure_epwm_timebase(EPWM2_BASE, false); // slave
-        configure_epwm_timebase(EPWM3_BASE, false); // slave
-        configure_epwm_timebase(EPWM4_BASE, false); // slave
+        // Add 5 cycle delay before accessing peripheral registers.
+        asm(" RPT #5 || NOP");
 
-        // Step 4 — Release all timebases simultaneously
-        // All 4 counters start together from this point
+        // General configuration for all four ePWM modules
+        size_t i;
+        for (i = 0; i < EPWM_NUM; i++)
+        {
+                // Set the ePWM modules clock dividers to 1 so that TBCLK = EPWMCLK = SYSCLK / 2.
+                EPWM_setClockPrescaler(
+                        epwms_base_addresses[i], EPWM_CLOCK_DIVIDER_1, EPWM_HSCLOCK_DIVIDER_1);
+
+                // Enable the time-base period shadow register mode.
+                EPWM_setPeriodLoadMode(epwms_base_addresses[i], EPWM_PERIOD_SHADOW_LOAD);
+
+                // Make shadow to active load to occur when time base counter reaches 0.
+                EPWM_selectPeriodLoadEvent(epwms_base_addresses[i],
+                                           EPWM_SHADOW_LOAD_MODE_COUNTER_ZERO);
+
+                // Set up the counter compare shadow load mode.
+                EPWM_setCounterCompareShadowLoadMode(epwms_base_addresses[i],
+                                                     EPWM_COUNTER_COMPARE_A,
+                                                     EPWM_COMP_LOAD_ON_CNTR_ZERO);
+
+                // Set the time-base period value.
+                EPWM_setTimeBasePeriod(epwms_base_addresses[i], TBPRD);
+
+                // Set the counter-compare register value for all four ePWMs so they have 50% duty
+                // cycle.
+                EPWM_setCounterCompareValue(epwms_base_addresses[i], EPWM_COUNTER_COMPARE_A, CMP);
+
+                // Set the "Action Qualifer" action for all four ePWM modules.
+                EPWM_setActionQualifierAction(epwms_base_addresses[i],
+                                              EPWM_AQ_OUTPUT_A,
+                                              EPWM_AQ_OUTPUT_HIGH,
+                                              EPWM_AQ_OUTPUT_ON_TIMEBASE_UP_CMPA);
+                EPWM_setActionQualifierAction(epwms_base_addresses[i],
+                                              EPWM_AQ_OUTPUT_A,
+                                              EPWM_AQ_OUTPUT_LOW,
+                                              EPWM_AQ_OUTPUT_ON_TIMEBASE_DOWN_CMPA);
+
+                // Deadtime inseration for each leg so each leg makes active high complementary
+                // signals.
+                EPWM_setDeadBandDelayPolarity(
+                        epwms_base_addresses[i], EPWM_DB_FED, EPWM_DB_POLARITY_ACTIVE_LOW);
+                EPWM_setDeadBandDelayMode(epwms_base_addresses[i], EPWM_DB_RED, true);
+                EPWM_setRisingEdgeDelayCount(epwms_base_addresses[i], DEADBAND);
+                EPWM_setDeadBandDelayMode(epwms_base_addresses[i], EPWM_DB_FED, true);
+                EPWM_setFallingEdgeDelayCount(epwms_base_addresses[i], DEADBAND);
+
+                // Set the counting mode for all four ePWMs to up-down mode.
+                EPWM_setTimeBaseCounterMode(epwms_base_addresses[i], EPWM_COUNTER_MODE_UP_DOWN);
+
+                // Start all four time-base counters from zero.
+                EPWM_setTimeBaseCounter(epwms_base_addresses[i], 0U);
+        }
+
+        // Make ePWM1 (master) send SYNCOUT pulse when its counter reaches zero.
+        EPWM_setSyncOutPulseMode(EPWM1_BASE, EPWM_SYNC_OUT_PULSE_ON_COUNTER_ZERO);
+        EPWM_setSyncOutPulseMode(EPWM4_BASE, EPWM_SYNC_OUT_PULSE_ON_COUNTER_ZERO);
+
+        // Make ePWM2, ePWM4, and ePWM5 to be the slave of the ePWM1.
+        SysCtl_setSyncInputConfig(SYSCTL_SYNC_IN_EPWM4, SYSCTL_SYNC_IN_SRC_EPWM1SYNCOUT);
+
+        // Ignore the synchronization input for ePWM1 since its the master.
+        EPWM_disablePhaseShiftLoad(EPWM1_BASE);
+
+        // Enable the synchronization input for ePWM2, ePWM4, and ePWM5 since they are slaves.
+        EPWM_enablePhaseShiftLoad(EPWM2_BASE);
+        EPWM_enablePhaseShiftLoad(EPWM4_BASE);
+        EPWM_enablePhaseShiftLoad(EPWM5_BASE);
+
+        // Set counter of slaves to count down after ePWM1 SYNCOUT event so that they are behind
+        // ePWM1.
+        EPWM_setCountModeAfterSync(EPWM2_BASE, EPWM_COUNT_MODE_DOWN_AFTER_SYNC);
+        EPWM_setCountModeAfterSync(EPWM4_BASE, EPWM_COUNT_MODE_DOWN_AFTER_SYNC);
+        EPWM_setCountModeAfterSync(EPWM5_BASE, EPWM_COUNT_MODE_DOWN_AFTER_SYNC);
+
+        // Phase shift for ePWM2 so that it is shifted 180 degrees from ePWM1.
+        // Whole period is 2TBPRD so 180 degrees is TBPRD.
+        EPWM_setPhaseShift(EPWM2_BASE, TBPRD - 2);
+
+        EPWM_setPhaseShift(EPWM4_BASE, TBPHS);
+        EPWM_setPhaseShift(EPWM5_BASE, TBPRD - 2); // For the same reason that was mentioned above.
+
+        // Start TBCLK. Now the time-base counter for all ePWM modules are synchronized.
         SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_TBCLKSYNC);
-}
-
-void configureEPWMOutputs(uint32_t base)
-{
-        // ---------------------------------------------------
-        // STEP 1: Set compare A to 50% duty (TBPRD/2)
-        // This gives symmetric center-aligned PWM
-        // Phase shift is applied via TBPHS, not CMPA
-        // ---------------------------------------------------
-        EPWM_setCounterCompareValue(base, EPWM_COUNTER_COMPARE_A, EPWM_TBPRD / 2U);
-
-        // Shadow load on CTR = zero (center of up-down cycle)
-        EPWM_setCounterCompareShadowLoadMode(
-                base, EPWM_COUNTER_COMPARE_A, EPWM_COMP_LOAD_ON_CNTR_ZERO);
-
-        // ---------------------------------------------------
-        // STEP 2: Action Qualifier — EPWMxA
-        // Up count, CTR = CMPA → Set HIGH
-        // Down count, CTR = CMPA → Set LOW
-        // ---------------------------------------------------
-        EPWM_setActionQualifierAction(
-                base, EPWM_AQ_OUTPUT_A, EPWM_AQ_OUTPUT_HIGH, EPWM_AQ_OUTPUT_ON_TIMEBASE_UP_CMPA);
-
-        EPWM_setActionQualifierAction(
-                base, EPWM_AQ_OUTPUT_A, EPWM_AQ_OUTPUT_LOW, EPWM_AQ_OUTPUT_ON_TIMEBASE_DOWN_CMPA);
-
-        // ---------------------------------------------------
-        // STEP 3: Dead Band
-        // Source both RED and FED from EPWMxA
-        // EPWMxB = inverted and delayed EPWMxA (complementary)
-        // ---------------------------------------------------
-
-        // Input source for both delays is EPWMxA
-        EPWM_setRisingEdgeDeadBandDelayInput(base, EPWM_DB_INPUT_EPWMA);
-        EPWM_setFallingEdgeDeadBandDelayInput(base, EPWM_DB_INPUT_EPWMA);
-
-        // Enable both RED and FED
-        EPWM_setDeadBandDelayMode(base, EPWM_DB_RED, true);
-        EPWM_setDeadBandDelayMode(base, EPWM_DB_FED, true);
-
-        // Invert FED output so EPWMxB is complementary to EPWMxA
-        // EPWMxA: active high (no inversion)
-        // EPWMxB: active high after inversion
-        EPWM_setDeadBandDelayPolarity(base, EPWM_DB_RED, EPWM_DB_POLARITY_ACTIVE_HIGH);
-        EPWM_setDeadBandDelayPolarity(base, EPWM_DB_FED, EPWM_DB_POLARITY_ACTIVE_LOW);
-
-        // Set delay counts (same for both edges for symmetry)
-        EPWM_setRisingEdgeDelayCount(base, EPWM_DB_DELAY_COUNTS);
-        EPWM_setFallingEdgeDelayCount(base, EPWM_DB_DELAY_COUNTS);
-
-        // Dead band counter runs at full TBCLK rate
-        EPWM_setDeadBandCounterClock(base, EPWM_DB_COUNTER_CLOCK_FULL_CYCLE);
-}
-
-void configureAllEPWMOutputs(void)
-{
-        configureEPWMOutputs(EPWM1_BASE);
-        configureEPWMOutputs(EPWM2_BASE);
-        configureEPWMOutputs(EPWM3_BASE);
-        configureEPWMOutputs(EPWM4_BASE);
-}
-
-void configureEPWMGPIOs(void)
-{
-        // EPWM1 - Primary bridge leg A
-        GPIO_setPinConfig(GPIO_0_EPWM1A);
-        GPIO_setPinConfig(GPIO_1_EPWM1B);
-
-        // EPWM2 - Primary bridge leg B
-        GPIO_setPinConfig(GPIO_2_EPWM2A);
-        GPIO_setPinConfig(GPIO_3_EPWM2B);
-
-        // EPWM3 - Secondary bridge leg A
-        GPIO_setPinConfig(GPIO_4_EPWM3A);
-        GPIO_setPinConfig(GPIO_5_EPWM3B);
-
-        // EPWM4 - Secondary bridge leg B
-        GPIO_setPinConfig(GPIO_6_EPWM4A);
-        GPIO_setPinConfig(GPIO_7_EPWM4B);
 }
