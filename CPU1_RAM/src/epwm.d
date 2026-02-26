@@ -1,9 +1,10 @@
 # FIXED
 
 src/epwm.obj: ../src/epwm.c
-src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h
+src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
 src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h
 src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h
+src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h
 src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
 src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h
 src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h
@@ -16,7 +17,6 @@ src/epwm.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/device.h
 src/epwm.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h
-src/epwm.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_sysctl.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_types.h
@@ -89,16 +89,18 @@ src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/upp.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_upp.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
+src/epwm.obj: ../include/clock.h
 src/epwm.obj: ../include/epwm.h
-src/epwm.obj: C:/Users/hgholab/workspace_ccstheia/dab/include/clock.h
 
 ../src/epwm.c:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h:
+C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h:
+
+C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
 
@@ -123,8 +125,6 @@ C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h:
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h:
-
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h:
 
@@ -270,7 +270,7 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h:
 
-../include/epwm.h:
+../include/clock.h:
 
-C:/Users/hgholab/workspace_ccstheia/dab/include/clock.h:
+../include/epwm.h:
 

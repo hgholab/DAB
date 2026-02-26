@@ -63,6 +63,7 @@
                                     <listOptionValue value="${COM_TI_C2000WARE_SYMBOLS}"/>
                                     <listOptionValue value="DEBUG"/>
                                     <listOptionValue value="CPU1"/>
+                                    <listOptionValue value="__TMS320C28XX__"/>
                                     <listOptionValue value="_LAUNCHXL_F28379D"/>
                                 </option>
                                 <option id="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL.1555694329" superClass="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL.off" valueType="enumerated"/>

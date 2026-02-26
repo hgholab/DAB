@@ -5,8 +5,8 @@
 #include "device.h"
 #include "driverlib.h"
 
+#include "../include/clock.h"
 #include "../include/epwm.h"
-#include "clock.h"
 
 #define EPWM_NUM 4 // Number of ePWM modules used to control DAB converter switches
 
@@ -131,6 +131,30 @@ void epwm_init(void)
         // Phase shift for ePWM4 and ePWM5.
         EPWM_setPhaseShift(EPWM4_BASE, TBPHS);
         EPWM_setPhaseShift(EPWM5_BASE, TBPRD - 2);
+
+        // ---------- ePWM ADC related configurations ----------
+
+        // Set the source of ADC SOC.
+        EPWM_setADCTriggerSource(EPWM4_BASE, EPWM_SOC_A, EPWM_SOC_TBCTR_U_CMPC);
+
+        // Set ePWM4 CMPC to TBPRD so that SOC happens right in the middle of the first and second
+        // switching events on the secondary so that the sampled signal is more accurate and has
+        // less noise due to switching events.
+        EPWM_setCounterCompareValue(EPWM4_BASE, EPWM_COUNTER_COMPARE_C, TBPRD);
+
+        // Enable shadow load mode for ePWM4 CMPC in the case the firmware requires changing CMPC
+        // value at runtime.
+        EPWM_setCounterCompareShadowLoadMode(
+                EPWM4_BASE, EPWM_COUNTER_COMPARE_C, EPWM_COMP_LOAD_ON_CNTR_ZERO);
+
+        // Make the ADC SOC trigger to happen one each switching period.
+        EPWM_setADCTriggerEventPrescale(EPWM4_BASE, EPWM_SOC_A, 1);
+
+        // Clear SOC flag before enabling the ADC SOC.
+        EPWM_clearADCTriggerFlag(EPWM4_BASE, EPWM_SOC_A);
+
+        // Enable SOCA.
+        EPWM_enableADCTrigger(EPWM4_BASE, EPWM_SOC_A);
 
         // Start TBCLK. Now the time-base counter for all ePWM modules are synchronized.
         SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_TBCLKSYNC);

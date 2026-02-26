@@ -88,9 +88,11 @@ src/main.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/upp.h
 src/main.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_upp.h
 src/main.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h
 src/main.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
+src/main.obj: ../include/clock.h
 src/main.obj: ../include/epwm.h
 src/main.obj: ../include/gpio.h
-src/main.obj: C:/Users/hgholab/workspace_ccstheia/dab/include/clock.h
+src/main.obj: ../include/timer.h
+src/main.obj: ../include/xbar.h
 
 ../src/main.c:
 
@@ -268,9 +270,13 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h:
 
+../include/clock.h:
+
 ../include/epwm.h:
 
 ../include/gpio.h:
 
-C:/Users/hgholab/workspace_ccstheia/dab/include/clock.h:
+../include/timer.h:
+
+../include/xbar.h:
 

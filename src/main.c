@@ -1,15 +1,34 @@
 #include "device.h"
 #include "driverlib.h"
 
+#include "../include/clock.h"
 #include "../include/epwm.h"
 #include "../include/gpio.h"
-#include "clock.h"
+#include "../include/timer.h"
+#include "../include/xbar.h"
+
+void system_init(void)
+{
+        // Device_init(); // From ti's device.c file
+        clock_init();
+
+        Device_initGPIO(); // From ti's device.c file
+        gpio_init();
+
+        xbar_init();
+
+        Interrupt_initModule();
+        Interrupt_initVectorTable();
+        Interrupt_enableGlobal();
+
+        timer_init();
+
+        // epwm_init();
+}
 
 int main(void)
 {
-        clock_init();
-        gpio_init();
-        epwm_init();
+        system_init();
 
         for (;;)
                 ;
@@ -137,39 +156,6 @@ void main(void)
                 //
                 ESTOP0;
         }
-}
-
-//
-// Function to configure and power up ADCA.
-//
-void initADC(void)
-{
-
-        //
-        // Set ADCDLK divider to /4
-        //
-        ADC_setPrescaler(ADCA_BASE, ADC_CLK_DIV_4_0);
-
-        //
-        // Set resolution and signal mode (see #defines above) and load
-        // corresponding trims.
-        //
-#if (EX_ADC_RESOLUTION == 12)
-        ADC_setMode(ADCA_BASE, ADC_RESOLUTION_12BIT, ADC_MODE_SINGLE_ENDED);
-#elif (EX_ADC_RESOLUTION == 16)
-        ADC_setMode(ADCA_BASE, ADC_RESOLUTION_16BIT, ADC_MODE_DIFFERENTIAL);
-#endif
-
-        //
-        // Set pulse positions to late
-        //
-        ADC_setInterruptPulseMode(ADCA_BASE, ADC_PULSE_END_OF_CONV);
-
-        //
-        // Power up the ADC and then delay for 1 ms
-        //
-        ADC_enableConverter(ADCA_BASE);
-        DEVICE_DELAY_US(1000);
 }
 
 //

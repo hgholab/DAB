@@ -12,7 +12,10 @@ C_SRCS += \
 ../src/epwm.c \
 ../src/gpio.c \
 ../src/main.c \
-../src/scheduler.c 
+../src/scheduler.c \
+../src/sci.c \
+../src/timer.c \
+../src/xbar.c 
 
 C_DEPS += \
 ./src/adc.d \
@@ -21,7 +24,10 @@ C_DEPS += \
 ./src/epwm.d \
 ./src/gpio.d \
 ./src/main.d \
-./src/scheduler.d 
+./src/scheduler.d \
+./src/sci.d \
+./src/timer.d \
+./src/xbar.d 
 
 OBJS += \
 ./src/adc.obj \
@@ -30,7 +36,10 @@ OBJS += \
 ./src/epwm.obj \
 ./src/gpio.obj \
 ./src/main.obj \
-./src/scheduler.obj 
+./src/scheduler.obj \
+./src/sci.obj \
+./src/timer.obj \
+./src/xbar.obj 
 
 OBJS__QUOTED += \
 "src\adc.obj" \
@@ -39,7 +48,10 @@ OBJS__QUOTED += \
 "src\epwm.obj" \
 "src\gpio.obj" \
 "src\main.obj" \
-"src\scheduler.obj" 
+"src\scheduler.obj" \
+"src\sci.obj" \
+"src\timer.obj" \
+"src\xbar.obj" 
 
 C_DEPS__QUOTED += \
 "src\adc.d" \
@@ -48,7 +60,10 @@ C_DEPS__QUOTED += \
 "src\epwm.d" \
 "src\gpio.d" \
 "src\main.d" \
-"src\scheduler.d" 
+"src\scheduler.d" \
+"src\sci.d" \
+"src\timer.d" \
+"src\xbar.d" 
 
 C_SRCS__QUOTED += \
 "../src/adc.c" \
@@ -57,6 +72,9 @@ C_SRCS__QUOTED += \
 "../src/epwm.c" \
 "../src/gpio.c" \
 "../src/main.c" \
-"../src/scheduler.c" 
+"../src/scheduler.c" \
+"../src/sci.c" \
+"../src/timer.c" \
+"../src/xbar.c" 
 
 

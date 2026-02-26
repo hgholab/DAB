@@ -3,14 +3,16 @@
 
 #include "../include/gpio.h"
 
-#define EPWM1A_GPIO_PIN 0U
-#define EPWM1B_GPIO_PIN 1U
-#define EPWM2A_GPIO_PIN 2U
-#define EPWM2B_GPIO_PIN 3U
-#define EPWM4A_GPIO_PIN 6U
-#define EPWM4B_GPIO_PIN 7U
-#define EPWM5A_GPIO_PIN 8U
-#define EPWM5B_GPIO_PIN 9U
+#define EPWM1A_GPIO_PIN  0U
+#define EPWM1B_GPIO_PIN  1U
+#define EPWM2A_GPIO_PIN  2U
+#define EPWM2B_GPIO_PIN  3U
+#define EPWM4A_GPIO_PIN  6U
+#define EPWM4B_GPIO_PIN  7U
+#define EPWM5A_GPIO_PIN  8U
+#define EPWM5B_GPIO_PIN  9U
+#define SCITXDA_GPIO_PIN 42U
+#define SCIRXDA_GPIO_PIN 43U
 
 void gpio_init(void)
 {
@@ -27,7 +29,6 @@ void gpio_init(void)
          * MUX channels and also is physically available on LAUNCHXL-F28379D. For this, we have
          * chosen GPIO15, which has OUTPUTXBAR4 as one of its MUX channels.
          */
-
         // Connect GPIO73 to XCLKOUT (MUX channel 3).
         GPIO_setPinConfig(GPIO_73_XCLKOUT);
         GPIO_setPadConfig(XCLKOUT_GPIO_PIN, GPIO_PIN_TYPE_STD);
@@ -35,7 +36,6 @@ void gpio_init(void)
         // Set GPIO15 to show OUTPUTXBAR4 signal.
         GPIO_setPinConfig(GPIO_15_OUTPUTXBAR4);
         GPIO_setPadConfig(OUTPUTXBAR4_GPIO_PIN, GPIO_PIN_TYPE_STD);
-        // GPIO_setDirectionMode(OUTPUTXBAR4_GPIO_PIN, GPIO_DIR_MODE_OUT);
 
         /*
          * For the gate signals of primary and secondary bridges, we use ePWM modules. Primary
@@ -56,7 +56,6 @@ void gpio_init(void)
          *
          * So for each ePWMxA and ePWMxB, we have to configure their corresponding GPIO pin.
          */
-
         GPIO_setPinConfig(GPIO_0_EPWM1A);
         GPIO_setPadConfig(EPWM1A_GPIO_PIN, GPIO_PIN_TYPE_STD);
 
@@ -80,4 +79,24 @@ void gpio_init(void)
 
         GPIO_setPinConfig(GPIO_9_EPWM5B);
         GPIO_setPadConfig(EPWM5B_GPIO_PIN, GPIO_PIN_TYPE_STD);
+
+        // Configure GPIO pins for SCIA (UART) communication.
+        GPIO_setPinConfig(GPIO_42_SCITXDA);
+        GPIO_setPadConfig(SCITXDA_GPIO_PIN, GPIO_PIN_TYPE_STD);
+
+        GPIO_setPinConfig(GPIO_43_SCIRXDA);
+        GPIO_setQualificationMode(SCIRXDA_GPIO_PIN, GPIO_QUAL_ASYNC);
+
+        // GPIO configuration for LED1
+        GPIO_setPinConfig(GPIO_31_GPIO31);
+        GPIO_setPadConfig(DEVICE_GPIO_PIN_LED1, GPIO_PIN_TYPE_STD);
+        GPIO_setDirectionMode(DEVICE_GPIO_PIN_LED1, GPIO_DIR_MODE_OUT);
+
+        // Connect GPIO73 to XCLKOUT (MUX channel 3).
+        GPIO_setPinConfig(GPIO_73_XCLKOUT);
+        GPIO_setPadConfig(XCLKOUT_GPIO_PIN, GPIO_PIN_TYPE_STD);
+
+        // Set GPIO14 to show OUTPUTXBAR3 signal.
+        GPIO_setPinConfig(GPIO_14_OUTPUTXBAR3);
+        GPIO_setPadConfig(OUTPUTXBAR3_GPIO_PIN, GPIO_PIN_TYPE_STD);
 }

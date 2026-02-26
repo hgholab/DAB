@@ -19,6 +19,9 @@ ORDERED_OBJS += \
 "./src/gpio.obj" \
 "./src/main.obj" \
 "./src/scheduler.obj" \
+"./src/sci.obj" \
+"./src/timer.obj" \
+"./src/xbar.obj" \
 "../2837xD_RAM_lnk_cpu1.cmd" \
 "C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/lib/SFO_v8_fpu_lib_build_c28_driverlib.lib" \
 "C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib" \
@@ -142,15 +145,15 @@ all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 dab.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --define=DEBUG --define=CPU1 --define=_LAUNCHXL_F28379D --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"dab.map" --heap_size=0x200 --stack_size=0x3F8 --warn_sections -i"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/lib" -i"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include" --reread_libs --define=RAM --diag_wrap=off --display_error_number --xml_link_info="dab_linkInfo.xml" --entry_point=code_start --rom_model -o "dab.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --define=DEBUG --define=CPU1 --define=__TMS320C28XX__ --define=_LAUNCHXL_F28379D --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"dab.map" --heap_size=0x200 --stack_size=0x3F8 --warn_sections -i"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/lib" -i"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include" --reread_libs --define=RAM --diag_wrap=off --display_error_number --xml_link_info="dab_linkInfo.xml" --entry_point=code_start --rom_model -o "dab.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "device\F2837xD_CodeStartBranch.obj" "device\device.obj" "src\adc.obj" "src\clock.obj" "src\controller.obj" "src\epwm.obj" "src\gpio.obj" "src\main.obj" "src\scheduler.obj" 
-	-$(RM) "device\device.d" "src\adc.d" "src\clock.d" "src\controller.d" "src\epwm.d" "src\gpio.d" "src\main.d" "src\scheduler.d" 
+	-$(RM) "device\F2837xD_CodeStartBranch.obj" "device\device.obj" "src\adc.obj" "src\clock.obj" "src\controller.obj" "src\epwm.obj" "src\gpio.obj" "src\main.obj" "src\scheduler.obj" "src\sci.obj" "src\timer.obj" "src\xbar.obj" 
+	-$(RM) "device\device.d" "src\adc.d" "src\clock.d" "src\controller.d" "src\epwm.d" "src\gpio.d" "src\main.d" "src\scheduler.d" "src\sci.d" "src\timer.d" "src\xbar.d" 
 	-$(RM) "device\F2837xD_CodeStartBranch.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
