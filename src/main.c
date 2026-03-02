@@ -1,6 +1,7 @@
 #include "device.h"
 #include "driverlib.h"
 
+#include "../include/adc.h"
 #include "../include/clock.h"
 #include "../include/epwm.h"
 #include "../include/gpio.h"
@@ -23,15 +24,21 @@ void system_init(void)
 
         timer_init();
 
-        // epwm_init();
+        epwm_init();
+
+        adc_init();
 }
 
 int main(void)
 {
         system_init();
+        DEVICE_DELAY_US(2000000);
+        SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_TBCLKSYNC);
 
         for (;;)
-                ;
+        {
+                //     ADC_forceSOC(ADCA_BASE, )
+        }
 }
 
 /*

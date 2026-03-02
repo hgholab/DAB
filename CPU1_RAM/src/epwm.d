@@ -89,8 +89,8 @@ src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/upp.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_upp.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h
 src/epwm.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
-src/epwm.obj: ../include/clock.h
 src/epwm.obj: ../include/epwm.h
+src/epwm.obj: ../include/clock.h
 
 ../src/epwm.c:
 
@@ -270,7 +270,7 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h:
 
-../include/clock.h:
-
 ../include/epwm.h:
+
+../include/clock.h:
 

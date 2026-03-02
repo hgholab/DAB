@@ -22,12 +22,12 @@ __interrupt void cpu_timer1_isr(void)
 
         // if (timer1_counter % 200 == 0)
         // {
-        if (led1_is_on)
-                GPIO_writePin(DEVICE_GPIO_PIN_LED1, 1);
-        else
-                GPIO_writePin(DEVICE_GPIO_PIN_LED1, 0);
+        // if (led1_is_on)
+        //         GPIO_writePin(DEVICE_GPIO_PIN_LED1, 1);
+        // else
+        //         GPIO_writePin(DEVICE_GPIO_PIN_LED1, 0);
 
-        led1_is_on = !led1_is_on;
+        // led1_is_on = !led1_is_on;
         // }
 }
 

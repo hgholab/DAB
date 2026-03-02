@@ -92,6 +92,11 @@ void gpio_init(void)
         GPIO_setPadConfig(DEVICE_GPIO_PIN_LED1, GPIO_PIN_TYPE_STD);
         GPIO_setDirectionMode(DEVICE_GPIO_PIN_LED1, GPIO_DIR_MODE_OUT);
 
+        // GPIO configuration for LED2
+        GPIO_setPinConfig(GPIO_34_GPIO34);
+        GPIO_setPadConfig(DEVICE_GPIO_PIN_LED2, GPIO_PIN_TYPE_STD);
+        GPIO_setDirectionMode(DEVICE_GPIO_PIN_LED2, GPIO_DIR_MODE_OUT);
+
         // Connect GPIO73 to XCLKOUT (MUX channel 3).
         GPIO_setPinConfig(GPIO_73_XCLKOUT);
         GPIO_setPadConfig(XCLKOUT_GPIO_PIN, GPIO_PIN_TYPE_STD);
@@ -99,4 +104,9 @@ void gpio_init(void)
         // Set GPIO14 to show OUTPUTXBAR3 signal.
         GPIO_setPinConfig(GPIO_14_OUTPUTXBAR3);
         GPIO_setPadConfig(OUTPUTXBAR3_GPIO_PIN, GPIO_PIN_TYPE_STD);
+
+        // Configure ADCIN14 pin.
+        // GPIO_setAnalogMode(uint32_t pin, GPIO_AnalogMode mode)
+        GPIO_setPinConfig(GPIO_25_GPIO25);
+        GPIO_setDirectionMode(25, GPIO_DIR_MODE_OUT);
 }
