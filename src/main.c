@@ -3,6 +3,7 @@
 
 #include "../include/adc.h"
 #include "../include/clock.h"
+#include "../include/converter.h"
 #include "../include/epwm.h"
 #include "../include/gpio.h"
 #include "../include/timer.h"
@@ -22,7 +23,7 @@ void system_init(void)
         Interrupt_initVectorTable();
         Interrupt_enableGlobal();
 
-        timer_init();
+        // timer_init();
 
         epwm_init();
 
@@ -32,12 +33,21 @@ void system_init(void)
 int main(void)
 {
         system_init();
-        DEVICE_DELAY_US(2000000);
+        // DEVICE_DELAY_US(2000000);
+        converter_init();
         SysCtl_enablePeripheral(SYSCTL_PERIPH_CLK_TBCLKSYNC);
 
         for (;;)
         {
-                //     ADC_forceSOC(ADCA_BASE, )
+                // GPIO_writePin(27U, 1);
+                // DEVICE_DELAY_US(10);
+                // GPIO_writePin(27U, 0);
+                // DEVICE_DELAY_US(10);
+
+                //         GPIO_writePin(24U, 1);
+                //         DEVICE_DELAY_US(10);
+                //         GPIO_writePin(24U, 0);
+                //         DEVICE_DELAY_US(10);
         }
 }
 

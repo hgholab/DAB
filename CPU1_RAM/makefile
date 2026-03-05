@@ -15,6 +15,7 @@ ORDERED_OBJS += \
 "./src/adc.obj" \
 "./src/clock.obj" \
 "./src/controller.obj" \
+"./src/converter.obj" \
 "./src/epwm.obj" \
 "./src/gpio.obj" \
 "./src/main.obj" \
@@ -152,8 +153,8 @@ dab.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "device\F2837xD_CodeStartBranch.obj" "device\device.obj" "src\adc.obj" "src\clock.obj" "src\controller.obj" "src\epwm.obj" "src\gpio.obj" "src\main.obj" "src\scheduler.obj" "src\sci.obj" "src\timer.obj" "src\xbar.obj" 
-	-$(RM) "device\device.d" "src\adc.d" "src\clock.d" "src\controller.d" "src\epwm.d" "src\gpio.d" "src\main.d" "src\scheduler.d" "src\sci.d" "src\timer.d" "src\xbar.d" 
+	-$(RM) "device\F2837xD_CodeStartBranch.obj" "device\device.obj" "src\adc.obj" "src\clock.obj" "src\controller.obj" "src\converter.obj" "src\epwm.obj" "src\gpio.obj" "src\main.obj" "src\scheduler.obj" "src\sci.obj" "src\timer.obj" "src\xbar.obj" 
+	-$(RM) "device\device.d" "src\adc.d" "src\clock.d" "src\controller.d" "src\converter.d" "src\epwm.d" "src\gpio.d" "src\main.d" "src\scheduler.d" "src\sci.d" "src\timer.d" "src\xbar.d" 
 	-$(RM) "device\F2837xD_CodeStartBranch.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

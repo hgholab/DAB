@@ -9,6 +9,7 @@ C_SRCS += \
 ../src/adc.c \
 ../src/clock.c \
 ../src/controller.c \
+../src/converter.c \
 ../src/epwm.c \
 ../src/gpio.c \
 ../src/main.c \
@@ -21,6 +22,7 @@ C_DEPS += \
 ./src/adc.d \
 ./src/clock.d \
 ./src/controller.d \
+./src/converter.d \
 ./src/epwm.d \
 ./src/gpio.d \
 ./src/main.d \
@@ -33,6 +35,7 @@ OBJS += \
 ./src/adc.obj \
 ./src/clock.obj \
 ./src/controller.obj \
+./src/converter.obj \
 ./src/epwm.obj \
 ./src/gpio.obj \
 ./src/main.obj \
@@ -45,6 +48,7 @@ OBJS__QUOTED += \
 "src\adc.obj" \
 "src\clock.obj" \
 "src\controller.obj" \
+"src\converter.obj" \
 "src\epwm.obj" \
 "src\gpio.obj" \
 "src\main.obj" \
@@ -57,6 +61,7 @@ C_DEPS__QUOTED += \
 "src\adc.d" \
 "src\clock.d" \
 "src\controller.d" \
+"src\converter.d" \
 "src\epwm.d" \
 "src\gpio.d" \
 "src\main.d" \
@@ -69,6 +74,7 @@ C_SRCS__QUOTED += \
 "../src/adc.c" \
 "../src/clock.c" \
 "../src/controller.c" \
+"../src/converter.c" \
 "../src/epwm.c" \
 "../src/gpio.c" \
 "../src/main.c" \

@@ -3,6 +3,7 @@
 "./src/adc.obj"
 "./src/clock.obj"
 "./src/controller.obj"
+"./src/converter.obj"
 "./src/epwm.obj"
 "./src/gpio.obj"
 "./src/main.obj"

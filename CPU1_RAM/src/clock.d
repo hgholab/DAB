@@ -1,9 +1,14 @@
 # FIXED
 
 src/clock.obj: ../src/clock.c
-src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
+src/clock.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/device.h
+src/clock.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h
+src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h
+src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h
+src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h
+src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h
@@ -11,11 +16,6 @@ src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h
 src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h
-src/clock.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/device.h
-src/clock.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h
-src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h
-src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h
-src/clock.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
 src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h
 src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_sysctl.h
 src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_types.h
@@ -88,16 +88,26 @@ src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/upp.h
 src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_upp.h
 src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h
 src/clock.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
+src/clock.obj: ../include/clock.h
 src/clock.obj: ../include/gpio.h
-src/clock.obj: C:/Users/hgholab/workspace_ccstheia/dab/include/clock.h
 
 ../src/clock.c:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
+C:/Users/hgholab/workspace_ccstheia/dab/device/device.h:
+
+C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h:
+
+C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h:
+
+C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h:
+
+C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h:
+
+C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h:
 
@@ -112,16 +122,6 @@ C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h:
-
-C:/Users/hgholab/workspace_ccstheia/dab/device/device.h:
-
-C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h:
-
-C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h:
-
-C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h:
-
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h:
 
@@ -267,7 +267,7 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h:
 
-../include/gpio.h:
+../include/clock.h:
 
-C:/Users/hgholab/workspace_ccstheia/dab/include/clock.h:
+../include/gpio.h:
 

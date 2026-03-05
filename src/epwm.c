@@ -34,7 +34,7 @@ void epwm_init(void)
         uint16_t CMP = (uint16_t)(TBPRD / 2U);
 
         // Phase shift in degrees (This will be controlled by the ADC ISR)
-        uint16_t phase_shift = 0;
+        uint16_t phase_shift = 45;
 
         // Phase shift for ePWM4 with respect to ePWM1
         uint16_t TBPHS = (uint16_t)((2 * TBPRD) * (phase_shift / 360.0f));
@@ -138,30 +138,58 @@ void epwm_init(void)
         // ---------- ePWM ADC related configurations ----------
 
         // Disable SOCA
-        EPWM_disableADCTrigger(EPWM4_BASE, EPWM_SOC_A);
+        // EPWM_disableADCTrigger(EPWM4_BASE, EPWM_SOC_A);
 
         // Set the source of ADC SOC.
-        EPWM_setADCTriggerSource(EPWM4_BASE, EPWM_SOC_A, EPWM_SOC_TBCTR_U_CMPC);
+        // EPWM_setADCTriggerSource(EPWM4_BASE, EPWM_SOC_A, EPWM_SOC_TBCTR_U_CMPC);
+        // EPWM_setADCTriggerSource(EPWM4_BASE, EPWM_SOC_A, EPWM_SOC_TBCTR_ZERO);
 
         // Make the ADC SOC trigger to happen once each switching period. This setting can be used
         // to have two different ADC capture and switching frequency.
-        EPWM_setADCTriggerEventPrescale(EPWM4_BASE, EPWM_SOC_A, 1);
+        // EPWM_setADCTriggerEventPrescale(EPWM4_BASE, EPWM_SOC_A, 1);
 
         // Set ePWM4 CMPC to TBPRD so that SOC happens right in the middle of the first and second
         // switching events on the secondary so that the sampled signal is more accurate and has
         // less noise due to switching events.
-        EPWM_setCounterCompareValue(EPWM4_BASE, EPWM_COUNTER_COMPARE_C, TBPRD - 1);
+        // EPWM_setCounterCompareValue(EPWM4_BASE, EPWM_COUNTER_COMPARE_C, TBPRD / 2);
 
         // Enable shadow load mode for ePWM4 CMPC in the case the firmware requires changing CMPC
         // value at runtime.
-        EPWM_setCounterCompareShadowLoadMode(
-                EPWM4_BASE, EPWM_COUNTER_COMPARE_C, EPWM_COMP_LOAD_ON_CNTR_ZERO);
+        // EPWM_setCounterCompareShadowLoadMode(
+        //         EPWM4_BASE, EPWM_COUNTER_COMPARE_C, EPWM_COMP_LOAD_ON_CNTR_ZERO);
 
         // Clear SOC flag before enabling the ADC SOC.
-        EPWM_clearADCTriggerFlag(EPWM4_BASE, EPWM_SOC_A);
+        // EPWM_clearADCTriggerFlag(EPWM4_BASE, EPWM_SOC_A);
 
         // Enable SOCA.
-        EPWM_enableADCTrigger(EPWM4_BASE, EPWM_SOC_A);
+        // EPWM_enableADCTrigger(EPWM4_BASE, EPWM_SOC_A);
+
+        // Disable SOCA
+        EPWM_disableADCTrigger(EPWM1_BASE, EPWM_SOC_A);
+
+        // Set the source of ADC SOC.
+        // EPWM_setADCTriggerSource(EPWM4_BASE, EPWM_SOC_A, EPWM_SOC_TBCTR_U_CMPC);
+        EPWM_setADCTriggerSource(EPWM1_BASE, EPWM_SOC_A, EPWM_SOC_TBCTR_ZERO);
+
+        // Make the ADC SOC trigger to happen once each switching period. This setting can be used
+        // to have two different ADC capture and switching frequency.
+        EPWM_setADCTriggerEventPrescale(EPWM1_BASE, EPWM_SOC_A, 1);
+
+        // Set ePWM4 CMPC to TBPRD so that SOC happens right in the middle of the first and second
+        // switching events on the secondary so that the sampled signal is more accurate and has
+        // less noise due to switching events.
+        // EPWM_setCounterCompareValue(EPWM4_BASE, EPWM_COUNTER_COMPARE_C, TBPRD / 2);
+
+        // Enable shadow load mode for ePWM4 CMPC in the case the firmware requires changing CMPC
+        // value at runtime.
+        // EPWM_setCounterCompareShadowLoadMode(
+        //         EPWM4_BASE, EPWM_COUNTER_COMPARE_C, EPWM_COMP_LOAD_ON_CNTR_ZERO);
+
+        // Clear SOC flag before enabling the ADC SOC.
+        EPWM_clearADCTriggerFlag(EPWM1_BASE, EPWM_SOC_A);
+
+        // Enable SOCA.
+        EPWM_enableADCTrigger(EPWM1_BASE, EPWM_SOC_A);
 
         // ---------- End of ePWM ADC related configurations ----------
 

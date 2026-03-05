@@ -90,6 +90,7 @@ src/main.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h
 src/main.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
 src/main.obj: ../include/adc.h
 src/main.obj: ../include/clock.h
+src/main.obj: ../include/converter.h
 src/main.obj: ../include/epwm.h
 src/main.obj: ../include/gpio.h
 src/main.obj: ../include/timer.h
@@ -274,6 +275,8 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminol
 ../include/adc.h:
 
 ../include/clock.h:
+
+../include/converter.h:
 
 ../include/epwm.h:
 

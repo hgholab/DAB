@@ -107,6 +107,13 @@ void gpio_init(void)
 
         // Configure ADCIN14 pin.
         // GPIO_setAnalogMode(uint32_t pin, GPIO_AnalogMode mode)
+
         GPIO_setPinConfig(GPIO_25_GPIO25);
         GPIO_setDirectionMode(25, GPIO_DIR_MODE_OUT);
+
+        GPIO_setPinConfig(GPIO_27_GPIO27);
+        GPIO_setDirectionMode(27, GPIO_DIR_MODE_OUT);
+
+        GPIO_setPinConfig(GPIO_24_GPIO24);
+        GPIO_setDirectionMode(24, GPIO_DIR_MODE_OUT);
 }

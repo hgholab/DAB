@@ -11,7 +11,8 @@
 
 static void adc_soc_init(void);
 
-float ref = 50.0f;
+// The output voltage reference
+float ref = 51.0f;
 
 // The ADC ISR (interrupt service routine) which is responsible for updating the phase
 // shift. At the end of ADC conversion adc_isr is invoked.
@@ -19,66 +20,25 @@ __interrupt void adc_isr(void)
 {
         // In order to measure the time that CPU takes to do the control loop calculations, we
         // toggle a GPIO pin at the top and the bottom of this ISR, so that we can measure the time
-        // passed between two toggles on the oscilloscope. For this purpose, we use GPIO 25 which is
+        // passed between two toggles on oscilloscope. For this purpose, we use GPIO 25 which is
         // easily accessible on LaunchXL f28379d.
-
-        GPIO_writePin(ADC_ISR_TOGGLE_GPIO_PIN, 1);
+        GPIO_writePin(24U, 1);
 
         uint16_t adc_result = ADC_readResult(ADCARESULT_BASE, ADC_SOC_NUMBER0);
 
-        // float phase_shift = controller_calculate_phase_shift(adc_result, ref);
-        // uint16_t TBPHS    = (uint16_t)((2 * TBPRD) * (phase_shift / 360.0f));
-
-        // EPWM_setPhaseShift(EPWM4_BASE, TBPHS);
-
-        // float phase_shift = controller_calculate_phase_shift(adc_result, ref);
-        float phase_shift;
-        uint16_t TBPHS;
-        // EPWM_setPhaseShift(EPWM4_BASE, TBPHS);
-
-        if (adc_result >= 2048U)
-        {
-                phase_shift = 90;
-
-                GPIO_writePin(DEVICE_GPIO_PIN_LED1, 0); // blue LED on
-                GPIO_writePin(DEVICE_GPIO_PIN_LED2, 1);
-        }
-        else
-        {
-                phase_shift = 30;
-
-                GPIO_writePin(DEVICE_GPIO_PIN_LED1, 1); // blue LED off
-                GPIO_writePin(DEVICE_GPIO_PIN_LED2, 0);
-        }
-
-        TBPHS = (uint16_t)((2 * TBPRD) * (phase_shift / 360.0f));
+        // A value of 0.70 is subtracted of the ref, because the ADC and the voltage divider feeding
+        // it on the BOOSTXL-3PHGANINV cards are not exact and accurate. This subtraction makes the
+        // output voltage to track the reference with lower values of error. Think of this as a
+        // measure to calibrate the ADC reading.
+        float phase_shift = controller_calculate_phase_shift(adc_result, ref - 0.70f);
+        uint16_t TBPHS    = (uint16_t)((2 * TBPRD) * (phase_shift / 360.0f));
         EPWM_setPhaseShift(EPWM4_BASE, TBPHS);
-
-        // adc_counter++;
-
-        // // if (adc_counter % 200 == 0)
-        // // {
-        // if (is_on)
-        // {
-        //         // GPIO_writePin(DEVICE_GPIO_PIN_LED1, 1);
-        //         GPIO_writePin(ADC_ISR_TOGGLE_GPIO_PIN, 1);
-        // }
-        // else
-        // {
-        //         // GPIO_writePin(DEVICE_GPIO_PIN_LED1, 0);
-        //         GPIO_writePin(ADC_ISR_TOGGLE_GPIO_PIN, 0);
-        // }
-
-        // is_on = !is_on;
-        // // }
-
-        DEVICE_DELAY_US(1);
-
-        // Control loop calculations here
-        GPIO_writePin(ADC_ISR_TOGGLE_GPIO_PIN, 0);
 
         ADC_clearInterruptStatus(ADCA_BASE, ADC_INT_NUMBER1);
         Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP1);
+
+        // Clear the pin at the end of ISR.
+        GPIO_writePin(24U, 0);
 }
 
 void adc_init(void)
@@ -114,9 +74,10 @@ void adc_init(void)
         adc_soc_init();
 }
 
+// Configuration for ADC SOC (start of conversion)
 static void adc_soc_init(void)
 {
-        ADC_setupSOC(ADCA_BASE, ADC_SOC_NUMBER0, ADC_TRIGGER_EPWM4_SOCA, ADC_CH_ADCIN14, 15);
+        ADC_setupSOC(ADCA_BASE, ADC_SOC_NUMBER0, ADC_TRIGGER_EPWM1_SOCA, ADC_CH_ADCIN14, 15);
         ADC_setInterruptSource(ADCA_BASE, ADC_INT_NUMBER1, ADC_SOC_NUMBER0);
         ADC_enableInterrupt(ADCA_BASE, ADC_INT_NUMBER1);
         ADC_clearInterruptStatus(ADCA_BASE, ADC_INT_NUMBER1);

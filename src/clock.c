@@ -1,10 +1,9 @@
-#include <stdint.h>
 
 #include "device.h"
 #include "driverlib.h"
 
+#include "../include/clock.h"
 #include "../include/gpio.h"
-#include "clock.h"
 
 uint32_t sysclk_frequency; // This is the value of SYSCLK (PLLSYSCLK).
 
