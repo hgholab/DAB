@@ -1,0 +1,72 @@
+[
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\"",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/device/F2837xD_CodeStartBranch.asm"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/device/device.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/adc.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/clock.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/controller.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/converter.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/epwm.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/gpio.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/main.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/scheduler.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/sci.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/sci_cpu2.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/timer.c"
+   },
+   {
+      "directory" : "C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH",
+      "command"   : "clang++ -I\"C:/Users/hgholab/workspace_ccstheia/dab\" -I\"C:/Users/hgholab/workspace_ccstheia/dab/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/C2000Ware_6_00_01_00/libraries/calibration/hrpwm/f2837xd/include/\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -D_FLASH -I\"C:/Users/hgholab/workspace_ccstheia/dab/CPU1_FLASH/syscfg\" -xc",
+      "file"      : "C:/Users/hgholab/workspace_ccstheia/dab/src/xbar.c"
+   }
+]

@@ -16,6 +16,7 @@ void clock_init(void)
 
         // Store the SYSCLK frequency in a global variable so that is accessible to other files.
         sysclk_frequency = SysCtl_getClock(DEVICE_OSCSRC_FREQ);
+        // sysclk_frequency = SysCtl_getLowSpeedClock(DEVICE_OSCSRC_FREQ);
 
         // Configure XCLKOUT so that it reads CPU system clock with a 1 to 8 scale.
         SysCtl_selectClockOutSource(SYSCTL_CLOCKOUT_SYSCLK);

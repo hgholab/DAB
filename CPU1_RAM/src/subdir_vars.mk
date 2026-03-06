@@ -15,7 +15,9 @@ C_SRCS += \
 ../src/main.c \
 ../src/scheduler.c \
 ../src/sci.c \
+../src/sci_cpu2.c \
 ../src/timer.c \
+../src/utils.c \
 ../src/xbar.c 
 
 C_DEPS += \
@@ -28,7 +30,9 @@ C_DEPS += \
 ./src/main.d \
 ./src/scheduler.d \
 ./src/sci.d \
+./src/sci_cpu2.d \
 ./src/timer.d \
+./src/utils.d \
 ./src/xbar.d 
 
 OBJS += \
@@ -41,7 +45,9 @@ OBJS += \
 ./src/main.obj \
 ./src/scheduler.obj \
 ./src/sci.obj \
+./src/sci_cpu2.obj \
 ./src/timer.obj \
+./src/utils.obj \
 ./src/xbar.obj 
 
 OBJS__QUOTED += \
@@ -54,7 +60,9 @@ OBJS__QUOTED += \
 "src\main.obj" \
 "src\scheduler.obj" \
 "src\sci.obj" \
+"src\sci_cpu2.obj" \
 "src\timer.obj" \
+"src\utils.obj" \
 "src\xbar.obj" 
 
 C_DEPS__QUOTED += \
@@ -67,7 +75,9 @@ C_DEPS__QUOTED += \
 "src\main.d" \
 "src\scheduler.d" \
 "src\sci.d" \
+"src\sci_cpu2.d" \
 "src\timer.d" \
+"src\utils.d" \
 "src\xbar.d" 
 
 C_SRCS__QUOTED += \
@@ -80,7 +90,9 @@ C_SRCS__QUOTED += \
 "../src/main.c" \
 "../src/scheduler.c" \
 "../src/sci.c" \
+"../src/sci_cpu2.c" \
 "../src/timer.c" \
+"../src/utils.c" \
 "../src/xbar.c" 
 
 

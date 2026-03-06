@@ -6,7 +6,7 @@
 #define LED2_GPIO_PIN           34U
 #define OUTPUTXBAR4_GPIO_PIN    15U
 #define OUTPUTXBAR3_GPIO_PIN    14U
-#define ADC_ISR_TOGGLE_GPIO_PIN 25U
+#define ADC_ISR_TOGGLE_GPIO_PIN 24U
 
 void gpio_init(void);
 

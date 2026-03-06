@@ -81,11 +81,47 @@ void gpio_init(void)
         GPIO_setPadConfig(EPWM5B_GPIO_PIN, GPIO_PIN_TYPE_STD);
 
         // Configure GPIO pins for SCIA (UART) communication.
-        GPIO_setPinConfig(GPIO_42_SCITXDA);
-        GPIO_setPadConfig(SCITXDA_GPIO_PIN, GPIO_PIN_TYPE_STD);
+        // GPIO_setPinConfig(GPIO_42_SCITXDA);
+        // GPIO_setPadConfig(SCITXDA_GPIO_PIN, GPIO_PIN_TYPE_STD);
 
+        // GPIO_setPinConfig(GPIO_43_SCIRXDA);
+        // GPIO_setQualificationMode(SCIRXDA_GPIO_PIN, GPIO_QUAL_ASYNC);
+
+        //
+        // GPIO43 is the SCI Rx pin.
+        //
+        GPIO_setMasterCore(43, GPIO_CORE_CPU1);
         GPIO_setPinConfig(GPIO_43_SCIRXDA);
-        GPIO_setQualificationMode(SCIRXDA_GPIO_PIN, GPIO_QUAL_ASYNC);
+        GPIO_setDirectionMode(43, GPIO_DIR_MODE_IN);
+        GPIO_setPadConfig(43, GPIO_PIN_TYPE_PULLUP);
+        GPIO_setQualificationMode(43, GPIO_QUAL_ASYNC);
+
+        //
+        // GPIO42 is the SCI Tx pin.
+        //
+        GPIO_setMasterCore(42, GPIO_CORE_CPU1);
+        GPIO_setPinConfig(GPIO_42_SCITXDA);
+        GPIO_setDirectionMode(42, GPIO_DIR_MODE_OUT);
+        GPIO_setPadConfig(42, GPIO_PIN_TYPE_STD);
+        GPIO_setQualificationMode(42, GPIO_QUAL_ASYNC);
+
+        //
+        // GPIO28 is the SCI Rx pin.
+        //
+        // GPIO_setMasterCore(28, GPIO_CORE_CPU1);
+        // GPIO_setPinConfig(GPIO_28_SCIRXDA);
+        // GPIO_setDirectionMode(28, GPIO_DIR_MODE_IN);
+        // GPIO_setPadConfig(28, GPIO_PIN_TYPE_STD);
+        // GPIO_setQualificationMode(28, GPIO_QUAL_ASYNC);
+
+        // //
+        // // GPIO29 is the SCI Tx pin.
+        // //
+        // GPIO_setMasterCore(29, GPIO_CORE_CPU1);
+        // GPIO_setPinConfig(GPIO_29_SCITXDA);
+        // GPIO_setDirectionMode(29, GPIO_DIR_MODE_OUT);
+        // GPIO_setPadConfig(29, GPIO_PIN_TYPE_STD);
+        // GPIO_setQualificationMode(29, GPIO_QUAL_ASYNC);
 
         // GPIO configuration for LED1
         GPIO_setPinConfig(GPIO_31_GPIO31);

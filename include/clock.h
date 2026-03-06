@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define DAB_SWITCHING_FREQ 350000UL
+#define DAB_SWITCHING_FREQ 200000UL
 
 extern uint32_t sysclk_frequency;
 

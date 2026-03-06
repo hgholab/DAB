@@ -90,6 +90,7 @@ src/timer.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h
 src/timer.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
 src/timer.obj: ../include/timer.h
 src/timer.obj: ../include/clock.h
+src/timer.obj: ../include/gpio.h
 
 ../src/timer.c:
 
@@ -270,4 +271,6 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminol
 ../include/timer.h:
 
 ../include/clock.h:
+
+../include/gpio.h:
 

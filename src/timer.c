@@ -7,8 +7,9 @@
 #include "../include/timer.h"
 
 #include "../include/clock.h"
+#include "../include/gpio.h"
 
-#define CPU_TIMER1_FREQ 400000UL
+#define CPU_TIMER1_FREQ 1000UL
 
 uint32_t timer1_counter = 0UL;
 bool led1_is_on         = false;
@@ -20,15 +21,17 @@ __interrupt void cpu_timer1_isr(void)
 
         timer1_counter++;
 
-        // if (timer1_counter % 200 == 0)
-        // {
-        // if (led1_is_on)
-        //         GPIO_writePin(DEVICE_GPIO_PIN_LED1, 1);
-        // else
-        //         GPIO_writePin(DEVICE_GPIO_PIN_LED1, 0);
+        if (timer1_counter % 200 == 0)
+        {
+                // if (led1_is_on)
+                //         GPIO_writePin(DEVICE_GPIO_PIN_LED1, 1);
+                // else
+                //         GPIO_writePin(DEVICE_GPIO_PIN_LED1, 0);
 
-        // led1_is_on = !led1_is_on;
-        // }
+                // led1_is_on = !led1_is_on;
+
+                // GPIO_togglePin(LED1_GPIO_PIN);
+        }
 }
 
 // This function configures the TIMER1 so that it can be used to measure the execution time of

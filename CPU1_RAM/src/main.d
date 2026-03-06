@@ -93,6 +93,7 @@ src/main.obj: ../include/clock.h
 src/main.obj: ../include/converter.h
 src/main.obj: ../include/epwm.h
 src/main.obj: ../include/gpio.h
+src/main.obj: ../include/sci.h
 src/main.obj: ../include/timer.h
 src/main.obj: ../include/xbar.h
 
@@ -281,6 +282,8 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminol
 ../include/epwm.h:
 
 ../include/gpio.h:
+
+../include/sci.h:
 
 ../include/timer.h:
 

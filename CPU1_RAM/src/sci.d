@@ -1,14 +1,9 @@
 # FIXED
 
 src/sci.obj: ../src/sci.c
-src/sci.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/device.h
-src/sci.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h
-src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h
-src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h
-src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
+src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h
-src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h
@@ -16,6 +11,11 @@ src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sy
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h
 src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h
+src/sci.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/device.h
+src/sci.obj: C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h
+src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h
+src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h
+src/sci.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
 src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h
 src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_sysctl.h
 src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_types.h
@@ -89,24 +89,16 @@ src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_upp.h
 src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h
 src/sci.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
 src/sci.obj: ../include/sci.h
+src/sci.obj: ../include/adc.h
+src/sci.obj: ../include/utils.h
 
 ../src/sci.c:
 
-C:/Users/hgholab/workspace_ccstheia/dab/device/device.h:
-
-C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h:
-
-C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h:
-
-C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h:
-
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
+C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h:
-
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h:
 
@@ -121,6 +113,16 @@ C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h:
 
 C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h:
+
+C:/Users/hgholab/workspace_ccstheia/dab/device/device.h:
+
+C:/Users/hgholab/workspace_ccstheia/dab/device/driverlib.h:
+
+C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h:
+
+C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h:
+
+C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h:
 
@@ -267,4 +269,8 @@ C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version.h:
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h:
 
 ../include/sci.h:
+
+../include/adc.h:
+
+../include/utils.h:
 
